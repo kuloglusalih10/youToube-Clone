@@ -1,0 +1,150 @@
+$base-color: #f8f8f8;
+$hover-color : rgb(0 0 0 / 10%);
+$border-color: #d3d3d3;
+$icon-color: #0f0f0f;
+
+html{
+    font-size: 10px;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.header {
+
+    height: 56px;
+    padding: 0 16px;
+    display: flexbox;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+
+   
+    &__left-box{
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        .logo-box{
+            width: 129px;
+            display: flex;
+            flex-direction: row;
+            
+            a {
+                padding: 0;
+                align-items: center;
+                flex: none;
+                display: flexbox;
+                display: flex;
+                flex-direction: row;
+                align-self: center;
+                cursor: pointer;
+
+                .logo {
+                    height: 20px;
+                    width: 90px;
+                }
+            }
+
+            #country-code{
+                color: #606060;
+                margin: -6px 0 0 5px;
+                background: transparent;
+                cursor: pointer;
+                font-size: 10px;
+            }
+        }
+        
+        .icon-box{
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            margin-right: 16px;
+            cursor: pointer;
+            border-radius: 100%;
+            
+            &:hover {
+                background-color: $hover-color
+            }
+
+            .icon-button {
+                vertical-align: middle;
+                color: inherit;
+                outline: none;
+                background: none;
+                margin: 0;
+                border: none;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                line-height: 0;
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+    
+
+
+        button {
+            border: none;
+            background-color: transparent;
+        }
+
+        
+        
+    }
+
+    &__search-box{
+
+        flex: 0 1 732px;
+        min-width: 0;
+        display: flexbox;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .input-box{
+            margin: 0 0 0 40px;
+            padding: 0 4px;
+            flex: 1;
+            flex-basis: 0.000000001px;
+            display: flex;
+
+            button {
+            
+                border: 1px solid $border-color;
+                background-color: $base-color;
+                border-radius: 0 40px 40px 0;
+                cursor: pointer;
+                height: 40px;
+                width: 64px;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                outline: none;
+
+                .icon-box{
+                    width: 24px;
+                    height: 24px;
+                    color: $icon-color;
+
+                    .icon-container{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+            }
+        }
+    }
+
+
+    
+
+}
