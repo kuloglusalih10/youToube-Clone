@@ -2,10 +2,11 @@ $base-color: #f8f8f8;
 $hover-color : rgb(0 0 0 / 10%);
 $border-color: #d3d3d3;
 $icon-color: #0f0f0f;
+$middle-gray: rgb(0 0 0 / 5%);
 
 html{
     font-size: 10px;
-    font-family: Roboto, Arial, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
 }
 
 .header {
@@ -27,7 +28,7 @@ html{
         align-items: center;
         
         .logo-box{
-            width: 129px;
+            width: 113px;
             display: flex;
             flex-direction: row;
             
@@ -49,10 +50,11 @@ html{
 
             #country-code{
                 color: #606060;
-                margin: -6px 0 0 5px;
+                margin: -6px 0 0 4px;
                 background: transparent;
                 cursor: pointer;
                 font-size: 10px;
+                
             }
         }
         
@@ -169,12 +171,45 @@ html{
                 input {
                     border: none;
                     outline: none;
+                    color: hsl(0,0%,6.7%);
                     width: 100%;
+                    line-height: 24px;
                     font-size: 16px;
+                    font-family: "Roboto", "Noto", sans-serif;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -webkit-font-smoothing: antialiased;
+                    
+                }
+
+                .search-clear-button {
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    &:hover {
+                        background-color: $hover-color;
+                    }
+
+                    .clear-button{
+                        border: none;
+                        width: 24px;
+                        height: 24px;
+                        background: transparent;
+                        cursor: pointer;
+                    }
+                }
+
+                .hide {
+                    display: none;
                 }
             }
 
-            button {
+            .search-button {
             
                 border: 1px solid $border-color;
                 background-color: $base-color;
@@ -187,6 +222,47 @@ html{
                 align-items: center;
                 justify-content: center;
                 outline: none;
+                position: relative;
+
+                &:hover {
+                    background-color: #f0f0f0;
+                    border-color: #c6c6c6;
+                    box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+                }
+
+                .search-tooltip-box {
+                    top: 62px;
+                    display: block;
+                    position: absolute;
+                    outline: none;
+                    z-index: 1002;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+                    cursor: default;
+
+                    .search-tooltip {
+                        border-radius: 4px;
+                        margin: 8px;
+                        text-transform: none;
+                        word-break: normal;
+                        font-family: "Roboto", "Arial", sans-serif;
+                        font-size: 1.2rem;
+                        line-height: 1.8rem;
+                        font-weight: 400;
+                        display: block;
+                        outline: none;
+                        font-family: "Roboto", "Noto", sans-serif;
+                        -webkit-font-smoothing: antialiased;
+                        font-size: 10px;
+                        line-height: 1;
+                        background-color:#616161;
+                        color:  white;
+                        padding: 8px;
+                        border-radius: 2px;
+                    }
+                }
 
                 .icon-box{
                     width: 24px;
@@ -204,6 +280,101 @@ html{
 
             }
         }
+
+        .voice-search-box {
+
+            border-radius: 100px;
+            margin-left: 12px;
+            background-color: $middle-gray;
+
+            button {
+                color: $icon-color;
+                min-width: 0;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                position: relative;
+                margin: 0;
+                white-space: nowrap;
+                min-width: 0;
+                text-transform: none;
+                font-family: "Roboto", "Arial", sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 18px;
+                border: none;
+                cursor: pointer;
+                outline-width: 0;
+                box-sizing: border-box;
+                background: none;
+                text-decoration: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+                flex: 1;
+                flex-basis: 0.000000001px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    background-color: $hover-color;
+                }
+
+                .voice-icon-box {
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                }
+
+                .voice-tooltip-box {
+                    display: block;
+                    position: absolute;
+                    outline: none;
+                    z-index: 1002;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+                    cursor: default;
+                    top: 56px;
+
+                    .voice-tooltip {
+                        border-radius: 4px;
+                        margin: 8px;
+                        text-transform: none;
+                        word-break: normal;
+                        font-family: "Roboto", "Arial", sans-serif;
+                        font-size: 1.2rem;
+                        line-height: 1.8rem;
+                        font-weight: 400;
+                        display: block;
+                        outline: none;
+                        font-family: "Roboto", "Noto", sans-serif;
+                        -webkit-font-smoothing: antialiased;
+                        font-size: 10px;
+                        line-height: 1;
+                        background-color:  #616161;
+                        color:  white;
+                        padding: 8px;
+                        border-radius: 2px;
+                    }
+                }
+            }
+        }
+    }
+    &__right-box {
+        min-width: 225px;
+        align-items: center;
+        justify-content: flex-end;
+        flex: none;
+        display: flex;
+        flex-direction: row;
+        background-color: #1c62b9;
     }
 
 
