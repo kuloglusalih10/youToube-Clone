@@ -183,14 +183,17 @@ html{
                 }
 
                 .search-clear-button {
-                    width: 24px;
-                    height: 24px;
+                    width: 40px;
+                    height: 40px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     border: none;
                     background-color: transparent;
                     border-radius: 50%;
+                    min-width: 40px;
+                    margin-right: -8px;
+                    z-index: 100;
                     &:hover {
                         background-color: $hover-color;
                     }
@@ -368,13 +371,81 @@ html{
         }
     }
     &__right-box {
+
         min-width: 225px;
         align-items: center;
         justify-content: flex-end;
         flex: none;
         display: flex;
         flex-direction: row;
-        background-color: #1c62b9;
+
+        .buttons-box {
+
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            cursor: pointer;
+
+            
+
+            .settings-button{
+                width: 40px;
+                height: 40px;
+                outline: none;
+                margin-right: 8px;
+                color: #030303;
+                font-family: "Roboto", "Arial", sans-serif;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                button {
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+
+            .login-button {
+                color: #065fd4;
+                border-color: rgba(0, 0, 0, 0.1);
+                padding: 0 15px;
+                border-width: 1px;
+                border-style: solid;
+                height: 36px;
+                font-size: 14px;
+                line-height: 36px;
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    background-color: #def1ff;
+                    border-color: transparent;
+                }
+
+                .person-icon {
+                    margin-right: 6px;
+                    margin-left: -6px;
+                    width: 24px;
+                    height: 24px;
+                    line-height: 0;
+                    fill: currentColor;
+                }
+
+                .login-text {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-weight: 500;
+                    user-select: none;
+                }
+            }
+        }
+
     }
 
 
