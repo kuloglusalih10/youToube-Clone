@@ -7,22 +7,31 @@ const index = () => {
     const [isHide, setIsHide] = useState(true);
     const [input, setInput] = useState("");
     const inputRef = useRef(null);
+    const [searchHover, setSearchHover] = useState(false);
+
 
     useEffect(()=>{
         const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button-id');
 
-            const handleFocus = () => setIsHide(false);
-            const handleFocusOut = () => setIsHide(true);
+        const handleFocus = () => setIsHide(false);
+        const handleFocusOut = () => setIsHide(true);
+        const handleSearchHover = ()=> setSearchHover(true);
+        const handleSearchHoverOut = ()=> setSearchHover(false);
 
-            // Add event listeners
-            searchInput.addEventListener('focus', handleFocus);
-            searchInput.addEventListener('focusout', handleFocusOut);
+        // Add event listeners
+        searchInput.addEventListener('focus', handleFocus);
+        searchInput.addEventListener('focusout', handleFocusOut);
+        searchButton.addEventListener('mouseover', handleSearchHover);
+        searchButton.addEventListener('mouseout', handleSearchHoverOut);
 
-            // Cleanup function: removes listeners when component unmounts
-            return () => {
+        // Cleanup function: removes listeners when component unmounts
+        return () => {
             searchInput.removeEventListener('focus', handleFocus);
             searchInput.removeEventListener('focusout', handleFocusOut);
-            };
+            searchButton.removeEventListener('mouseover', handleSearchHover);
+            searchButton.removeEventListener('mouseout', handleSearchHoverOut);
+        };
 
 
     },[]);
@@ -82,13 +91,13 @@ const index = () => {
                             </div>
                         </div>
                     </form>
-                    <button aria-label='Ara' className='search-button'>
+                    <button aria-label='Ara' className='search-button' id='search-button-id'>
                         <div className='icon-box'>
                             <div className='icon-container'>
                                 <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: "none", display: "inherit", width: "100%", height: "100%"}}><path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
                             </div>
                         </div>
-                        <div className='search-tooltip-box'>
+                        <div className={classNames('search-tooltip-box tooltip-animation',{'hide' : searchHover, 'show' : !searchHover} )}>
                             <span className='search-tooltip'>
                                 Ara
                             </span>
