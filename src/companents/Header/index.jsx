@@ -8,22 +8,36 @@ const index = () => {
     const [input, setInput] = useState("");
     const inputRef = useRef(null);
     const [searchHover, setSearchHover] = useState(false);
+    const [voiceHover, setVoiceHover] = useState(false);
+    const [settingsHover, setSettingsHover] = useState(false);
 
 
     useEffect(()=>{
         const searchInput = document.getElementById('search-input');
         const searchButton = document.getElementById('search-button-id');
+        const voiceButton = document.getElementById('voice-button-id');
+        const settingsButton = document.getElementById('settings-button-id');
+        
 
         const handleFocus = () => setIsHide(false);
         const handleFocusOut = () => setIsHide(true);
         const handleSearchHover = ()=> setSearchHover(true);
         const handleSearchHoverOut = ()=> setSearchHover(false);
+        const handleVoicehHover = ()=> setVoiceHover(true);
+        const handleVoiceHoverOut = ()=> setVoiceHover(false);
+        const handleSettingshHover = ()=> setSettingsHover(true);
+        const handleSettingsHoverOut = ()=> setSettingsHover(false);
+
 
         // Add event listeners
         searchInput.addEventListener('focus', handleFocus);
         searchInput.addEventListener('focusout', handleFocusOut);
         searchButton.addEventListener('mouseover', handleSearchHover);
         searchButton.addEventListener('mouseout', handleSearchHoverOut);
+        voiceButton.addEventListener('mouseover', handleVoicehHover);
+        voiceButton.addEventListener('mouseout', handleVoiceHoverOut);
+        settingsButton.addEventListener('mouseover', handleSettingshHover);
+        settingsButton.addEventListener('mouseout', handleSettingsHoverOut);
 
         // Cleanup function: removes listeners when component unmounts
         return () => {
@@ -31,6 +45,10 @@ const index = () => {
             searchInput.removeEventListener('focusout', handleFocusOut);
             searchButton.removeEventListener('mouseover', handleSearchHover);
             searchButton.removeEventListener('mouseout', handleSearchHoverOut);
+            voiceButton.removeEventListener('mouseover', handleVoicehHover);
+            voiceButton.removeEventListener('mouseout', handleVoiceHoverOut);
+            settingsButton.removeEventListener('mouseover', handleSettingshHover);
+            settingsButton.removeEventListener('mouseout', handleSettingsHoverOut); 
         };
 
 
@@ -97,7 +115,7 @@ const index = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: "none", display: "inherit", width: "100%", height: "100%"}}><path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
                             </div>
                         </div>
-                        <div className={classNames('search-tooltip-box tooltip-animation',{'hide' : searchHover, 'show' : !searchHover} )}>
+                        <div className={classNames('search-tooltip-box tooltip-animation',{'hide' : !searchHover, 'show' : searchHover} )}>
                             <span className='search-tooltip'>
                                 Ara
                             </span>
@@ -105,11 +123,11 @@ const index = () => {
                     </button>
                 </div>
                 <div className='voice-search-box'>
-                    <button>
+                    <button id='voice-button-id'>
                         <div className='voice-icon-box'>
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: "none", display: "inherit", width: "100%", height: "100%"}}><path d="M12 3c-1.66 0-3 1.37-3 3.07v5.86c0 1.7 1.34 3.07 3 3.07s3-1.37 3-3.07V6.07C15 4.37 13.66 3 12 3zm6.5 9h-1c0 3.03-2.47 5.5-5.5 5.5S6.5 15.03 6.5 12h-1c0 3.24 2.39 5.93 5.5 6.41V21h2v-2.59c3.11-.48 5.5-3.17 5.5-6.41z"></path></svg>
                         </div>
-                        <div className='voice-tooltip-box'>
+                        <div className={classNames('voice-tooltip-box tooltip-animation',{'hide' : !voiceHover, 'show' : voiceHover} )}>
                             <span className='voice-tooltip'>
                                 Sesle arama yapın
                             </span>
@@ -120,10 +138,15 @@ const index = () => {
 
             <div className='header__right-box'>
                 <div className='buttons-box'>
-                    <div className='settings-button'>
+                    <div className='settings-button' id='settings-button-id'>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: "none", display: "inherit", width: "24px", height: "24px"}}><path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path></svg>
                         </button>
+                        <div className={classNames('settings-tooltip-box tooltip-animation',{'hide' : !settingsHover, 'show' : settingsHover} )}>
+                            <span className='settings-tooltip'>
+                                Ayarlar
+                            </span>
+                        </div>
                     </div>
 
                     <div className='login-button'>
