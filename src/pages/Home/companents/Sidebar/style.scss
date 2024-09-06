@@ -1,12 +1,60 @@
 .sidebar__main{
     width: 240px;
     background-color: white;
+    flex: 1;
+    flex-basis: 0.000000001px;
+    overflow-y: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+    overflow: hidden;
 
+    .sidebar_text_box {
+        border-bottom: 1px solid #0000001a;
+        display: inline-block;
+        padding: 16px 32px;
+        
+    }
+    .sidebar_text {
+           
+        display: block;
+        color: #0f0f0f;
+        font-family: "Roboto", "Arial", sans-serif;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        font-weight: 400;
+    }
 
     .sidebar_box{
 
         border-bottom: 1px solid #0000001a;
         padding: 12px;
+
+        .sidebar_title_box{
+            margin: 0;
+            
+
+            .sidebar_title{
+                
+                color: rgb(15, 15, 15);
+                font-family: "Roboto", "Arial", sans-serif;
+                font-size: 1.6rem;
+                line-height: 2.2rem;
+                max-height: 2.2rem;
+                font-weight: 500;
+                overflow: hidden;
+                display: block;
+                max-height: 2.2rem;
+                -webkit-line-clamp: 1;
+                display: box;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                white-space: normal;
+                padding: 6px 12px 4px;
+                height: 40px;
+                box-sizing: content-box;
+            }
+        }
 
         .sidebar__item{
     
@@ -49,11 +97,99 @@
             font-weight: 500;
         }
 
-        .sidebar_text {
-            display: inline-block;
-            padding: 16px 32px;
+       
+
+    }
+
+
+    .login-button {
+        color: #065fd4;
+        border-color: rgba(0, 0, 0, 0.1);
+        padding: 0 15px;
+        border-width: 1px;
+        border-style: solid;
+        height: 36px;
+        font-size: 14px;
+        line-height: 36px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        margin-top: 12px;
+        max-width: max-content;
+
+        &:hover {
+            background-color: #def1ff;
+            border-color: transparent;
         }
 
+        .person-icon {
+            margin-right: 6px;
+            margin-left: -6px;
+            width: 24px;
+            height: 24px;
+            line-height: 0;
+            fill: currentColor;
+        }
+
+        .login-text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-weight: 500;
+            user-select: none;
+        }
+    }
+
+    .sidebar_footer_box{
+        font-family: Roboto, Arial, sans-serif;
+
+        .sidebar_footer_top_links{
+
+            padding: 16px 24px 0;
+            border-top: 1px solid #0000001a;
+
+            .footer_top_link{
+                display: inline-block !important;
+                text-decoration: none;
+                color: #606060;
+                font-size: 1.3rem;
+                font-weight: 500;
+                line-height: 1.8rem;
+                margin-right: 8px;
+            }
+        }
+
+        .sidebar_footer_mid_links{
+
+            padding: 16px 24px 0;
+
+            .footer_mid_link{
+                display: inline-block !important;
+                text-decoration: none;
+                color: #606060;
+                font-size: 1.3rem;
+                font-weight: 500;
+                line-height: 1.8rem;
+                margin-right: 8px;
+            }
+        }
+
+        .sidebar_footer_bottom{
+            padding: 16px 24px;
+            color: #909090;
+            font-family: "Roboto", "Arial", sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+            font-weight: 400;
+            display: block !important;
+
+            .copyright{
+                color: #909090;
+                font-family: "Roboto", "Arial", sans-serif;
+                font-size: 1.2rem;
+                line-height: 1.8rem;
+                font-weight: 400;
+            }
+        }
     }
 
 
