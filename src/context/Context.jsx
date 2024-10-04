@@ -16,23 +16,33 @@ const ContextProvider = ({children}) => {
 
   const [videos, setVideos] = useState(null);
 
-  // useEffect(() => {
-  //   setVideos(null);
+   useEffect(() => {
+     setVideos(null);
 
-  //   if (selected.type === 'home') {
+     if (selected.type === 'home') {
 
-  //     // anasyafa 
-  //     getData('/home/').then((data) => setVideos(data.contents));
+       // anasyafa 
+       getData('/home/').then((response) => { 
 
-  //   } else {
-
-  //     // kategori 
-  //     getData(`/search/?q=${selected.name.toLowerCase()}`).then(
-  //       (data) => setVideos(data.contents) //! contents'i unutmuşuz
-  //     );
+        const filteredResults = response.items.filter(item => item.id.kind === 'youtube#video');
+        setVideos(filteredResults)
       
-  //   }
-  // }, [selected]);
+      });
+
+     } else {
+
+       // kategori 
+       getData(`/search/?q=${selected.name.toLowerCase()}`).then(
+         (response) => {
+
+            const filteredResults = response.items.filter(item => item.id.kind === 'youtube#video');
+            setVideos(filteredResults)
+        
+        }//! contents'i unutmuşuz
+       );
+      
+     }
+   }, [selected]);
 
   return (
     <Context.Provider value={{sidebar,setSidebar,selected, setSelected, videos}}>

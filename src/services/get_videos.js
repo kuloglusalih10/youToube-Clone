@@ -27,7 +27,7 @@ const options = {
   method: 'GET',
   url: 'https://youtube-v31.p.rapidapi.com/search',
   params: {
-    relatedToVideoId: '7Qqb4IyULmo',
+    relatedToVideoId: 'IzJVUcL3kQE',
     part: 'id,snippet',
     type: 'video',
     maxResults: '50',
@@ -39,6 +39,7 @@ const options = {
     'x-rapidapi-key': `${import.meta.env.VITE_RAPIDAPI_KEY}`,
     'x-rapidapi-host': 'youtube-v31.p.rapidapi.com'
   }
+
 };
 
 export const getData = async () => {
@@ -46,7 +47,8 @@ export const getData = async () => {
   try {
 
     const response = await axios.request(options);
-    console.log(response.data);
+    console.log('response data : ', response.data);
+    
     return response.data;
 
   } catch (error) {

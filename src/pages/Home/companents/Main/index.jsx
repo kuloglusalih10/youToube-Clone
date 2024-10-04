@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { Context } from '../../../../context/Context'
+import Lottie from 'react-lottie';
+import animationData from '../../../../assets/youTube_spinner.json'
 
 const index = () => {
 
-    // const {videos} = useContext(Context);
+    const {videos} = useContext(Context);
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true, 
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
+
+    useEffect(()=> {
+        console.log(videos);
+    },[videos])
 
     return (
         <div className='videos_area'>
@@ -23,9 +38,34 @@ const index = () => {
                     <div className='tab_item unactive_tab'>İzlenenler</div>
                     <div className='tab_item unactive_tab'>Yeni öneriler</div>
                     
-                   
-
                 </div>
+            </div>
+
+            <div className='videos_main'>
+                
+                    {
+                        videos == null ?
+
+                        <Lottie options={defaultOptions}
+                            height={200}
+                            width={200}
+                        />
+
+                        :
+
+                        videos.map((video)=>{
+                            return (
+                                <div className='video'>
+                                    <div className='image_box'>
+                                        <img className='image' src={`https://i.ytimg.com/vi/${video.id.videoId}/maxresdefault.jpg`} alt="" />
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                
+                    
+            
             </div>
         </div>
     )
