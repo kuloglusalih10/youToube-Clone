@@ -18,7 +18,11 @@ const index = () => {
       };
 
     useEffect(()=> {
-        console.log(videos);
+
+        console.log('videos : ', videos);
+        // videos.map((video)=> {
+        //     console.log(video.snippet.thumbnails.maxres.url )
+        // })
     },[videos])
 
     return (
@@ -53,11 +57,23 @@ const index = () => {
 
                         :
 
-                        videos.map((video)=>{
+                        videos.map((video, index)=>{
+
                             return (
-                                <div className='video'>
+                                <div key={index} className='video'>
                                     <div className='image_box'>
-                                        <img className='image' src={`https://i.ytimg.com/vi/${video.id.videoId}/maxresdefault.jpg`} alt="" />
+                                        <img className='image' src={video.snippet.thumbnails.maxres.url ?? '' } alt="" />
+                                    </div>
+                                    <div className='details'>
+
+                                        <div className='logo'>
+                                            <img className='image' src={video.channelLogo ?? 'deneme' } alt="" />
+                                        </div>
+
+                                        <div className='description'>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             )

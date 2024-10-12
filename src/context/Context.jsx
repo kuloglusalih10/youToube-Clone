@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState,useEffect } from "react";
 import { getData } from "../services/get_videos";
+import { getChannelLogo } from "../services/get_channel_logo";
 
 
 export const Context = createContext();
@@ -9,43 +10,44 @@ const ContextProvider = ({children}) => {
 
   const [sidebar, setSidebar] = useState(true);
 
-  const [selected, setSelected] = useState({
-    name: 'Anasayfa',
-    type: 'home',
-  });
-
   const [videos, setVideos] = useState(null);
 
    useEffect(() => {
-     setVideos(null);
 
-     if (selected.type === 'home') {
+    setVideos(null);
 
-       // anasyafa 
-       getData('/home/').then((response) => { 
+    // getData().then(
+    //   (response) => {
+    //     const filteredResults = response.items.filter(item => item.snippet.thumbnails.maxres  != undefined);
 
-        const filteredResults = response.items.filter(item => item.id.kind === 'youtube#video');
-        setVideos(filteredResults)
+    //     filteredResults.map((item, i)=> {
+    //         getChannelLogo(item.snippet.channelId).then((res)=> {
+    //           filteredResults[i].channelLogo = res
+    //         });
+    //     })
+
+    //     console.log('filtered results : ', filteredResults);
+    //     setVideos(filteredResults)
+    // }
+    // );
+
+    getData().then(async (response) => {
+      const filteredResults = response.items.filter(item => item.snippet.thumbnails.maxres !== undefined);
+    
+      // Tüm logoların yüklenmesini Promise.all ile bekleyelim
+      const resultsWithLogo = await Promise.all(filteredResults.map(async (item) => {
+        const logo = await getChannelLogo(item.snippet.channelId);
+        return { ...item, channelLogo: logo };
+      }));
+    
+      console.log('results with logo: ', resultsWithLogo);
+      setVideos(resultsWithLogo); // Veriyi state'e logosuyla birlikte set et
+    });
       
-      });
-
-     } else {
-
-       // kategori 
-       getData(`/search/?q=${selected.name.toLowerCase()}`).then(
-         (response) => {
-
-            const filteredResults = response.items.filter(item => item.id.kind === 'youtube#video');
-            setVideos(filteredResults)
-        
-        }//! contents'i unutmuşuz
-       );
-      
-     }
-   }, [selected]);
+   }, []);
 
   return (
-    <Context.Provider value={{sidebar,setSidebar,selected, setSelected, videos}}>
+    <Context.Provider value={{sidebar,setSidebar, videos}}>
       {children}
     </Context.Provider>
   )
