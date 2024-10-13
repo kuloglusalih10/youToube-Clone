@@ -2,12 +2,15 @@
     display: flex;
     flex-direction:  column;
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
+    overflow: hidden;
+    height: calc(100% - 56px);
+
+   
+    
     .tabs_section{
         display: flex;
         width: 100%;
-        //position: fixed;
+        // position: sticky;
         top: 56px;
         // width: 1811px;
         background-color: white;
@@ -67,15 +70,19 @@
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        flex: 1;
+        height: calc(100vh - 112px);
+
         gap: 0 17px;
         margin-top: 24px;
+        overflow-y: scroll;
+        scrollbar-color: transparent transparent;
+        scrollbar-width: thin;
 
         .video{
             width: 24%;
-            height: 25%;
-            
-            margin-bottom: 40px;
+            height: 40%;
+            cursor: pointer;
+            margin-bottom: 20px;
             border-radius: 14px;
 
             .image_box {
@@ -94,17 +101,131 @@
             .details {
                 display: flex;
 
-                .logo{
-                    width: 40px;
-                    height: 40px;
+                .logo_box{
+                    width: 36px;
+                    height: 36px;
                     border-radius: 14px ;
+                    margin-top: 12px;
+                    margin-right: 12px;
 
-                    .image{
-                        object-fit: fill;
+
+                    .logo{
+                        object-fit: cover;
                         width: 100%;
                         height: 100%;
                         border-radius: 100% ;
                     }
+                }
+
+                .description{
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .title {
+                        color: #0f0f0f;
+                        margin: 12px 0 4px 0;
+                        font-family: "Roboto", "Arial", sans-serif;
+                        font-size: 1.6rem;
+                        line-height: 2.2rem;
+                        font-weight: 500;
+                        overflow: hidden;
+                        display: block;
+                        max-height: 4.4rem;
+                        -webkit-line-clamp: 2;
+                        display: box;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        text-overflow: ellipsis;
+                        white-space: normal;
+                    
+                    }
+
+                    .channel_info_box {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        .channel_name{
+                            color: #606060;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            margin-right: -.1em;
+                            padding-right: .1em;
+                            white-space: pre;
+                            font-family: Roboto, Arial, sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: 20px;
+                            line-height: 20px;
+                            word-break: break-word
+                        }
+
+                        .icon_box {
+
+                            
+                            margin-bottom: 1px;
+                            margin-right: 8px;
+                            padding: 0;
+                            padding-left: 4px;
+                            flex: none;
+                            font-size:  1.2rem;
+                            font-weight: 500;
+                            line-height:  1.2rem;
+                            letter-spacing: unset;
+                            color: #606060;
+
+                            font-family: "Roboto", "Arial", sans-serif;
+                            font-size: 1.4rem;
+                            line-height: 2rem;
+                            font-weight: 400;
+
+                            .icon {
+                                pointer-events: none;
+                                display: inherit;
+                                width: 14px; 
+                                height: 14px;
+                                color: #606060;
+                                
+                                
+                                
+                            }
+                        }
+
+                        
+
+                    }
+
+                    .statistics {
+                        
+                        color: #555454;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        margin-right: -.1em;
+                        padding-right: .1em;
+                        white-space: pre;
+                        font-family: Roboto, Arial, sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 20px;
+                        line-height: 20px;
+                        word-break: break-word;
+                        margin-top: 2px;
+
+
+                        .viewCount{
+                           display: flex;
+                           align-items: center;
+                           font-family: "Roboto", "Arial", sans-serif;
+                        
+                            .dot {
+                                font-family: "Roboto", "Arial", sans-serif;
+                                font-size: 2.4rem;
+                                line-height: 2rem;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+
                 }
                 
             }
