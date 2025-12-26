@@ -1,3 +1,7 @@
+// Breakpoints
+$tablet: 1200px;
+$mobile: 792px;
+
 * {
     padding: 0;
     margin: 0;
@@ -16,4 +20,20 @@
     align-items: start;
     justify-content: start;
     overflow-y: hidden;
+    width: 100%;
+}
+
+// ==================== TABLET STYLES ====================
+@media (max-width: $tablet) {
+    .main {
+        // On tablet, sidebar becomes mini version
+    }
+}
+
+// ==================== MOBILE STYLES ====================
+@media (max-width: $mobile) {
+    .main {
+        // On mobile, no sidebar, content takes full width
+        padding-bottom: 48px; // Space for bottom navigation
+    }
 }

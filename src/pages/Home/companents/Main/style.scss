@@ -1,3 +1,8 @@
+// Breakpoints
+$tablet: 1200px;
+$mobile: 792px;
+$mobile-sm: 500px;
+
 .videos_area{
     display: flex;
     flex-direction:  column;
@@ -17,6 +22,13 @@
         z-index: 2000;
         height: 56px;
         padding: 0px 24px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .tabs{
             transform: translateX(0px);
@@ -77,21 +89,23 @@
         overflow-y: scroll;
         scrollbar-color: transparent transparent;
         scrollbar-width: thin;
+        padding: 0 16px;
 
         .video{
-            width: 24%;
-            height: 40%;
+            width: calc(25% - 13px);
+            height: auto;
+            min-height: 280px;
             cursor: pointer;
             margin-bottom: 20px;
             border-radius: 14px;
 
             .image_box {
                 width: 100%;
-                height: 60%;
+                aspect-ratio: 16/9;
                 border-radius: 14px ;
 
                 .image{
-                    object-fit: fill;
+                    object-fit: cover;
                     width: 100%;
                     height: 100%;
                     border-radius: 14px ;
@@ -104,6 +118,7 @@
                 .logo_box{
                     width: 36px;
                     height: 36px;
+                    min-width: 36px;
                     border-radius: 14px ;
                     margin-top: 12px;
                     margin-right: 12px;
@@ -120,6 +135,8 @@
                 .description{
                     display: flex;
                     flex-direction: column;
+                    flex: 1;
+                    min-width: 0;
                     
                     .title {
                         color: #0f0f0f;
@@ -232,6 +249,182 @@
         }
     }
 
+}
 
+// ==================== LARGE TABLET (1200px - 1400px) ====================
+@media (max-width: 1400px) {
+    .videos_area {
+        .videos_main {
+            .video {
+                width: calc(33.333% - 12px);
+            }
+        }
+    }
+}
 
+// ==================== TABLET STYLES (792px - 1200px) ====================
+@media (max-width: $tablet) {
+    .videos_area {
+        .tabs_section {
+            padding: 0 16px;
+        }
+
+        .videos_main {
+            gap: 0 12px;
+            padding: 0 12px;
+
+            .video {
+                width: calc(50% - 6px);
+                min-height: 240px;
+
+                .details {
+                    .logo_box {
+                        width: 32px;
+                        height: 32px;
+                        min-width: 32px;
+                        margin-right: 10px;
+                    }
+
+                    .description {
+                        .title {
+                            font-size: 1.4rem;
+                            line-height: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ==================== MOBILE STYLES (<792px) ====================
+@media (max-width: $mobile) {
+    .videos_area {
+        height: calc(100vh - 56px - 48px); // Header height - Bottom nav height
+
+        .tabs_section {
+            padding: 0 12px;
+            height: 48px;
+
+            .tabs {
+                .tab_item {
+                    margin: 8px;
+                    margin-left: 0;
+                    height: 28px;
+                    font-size: 1.3rem;
+                    padding: 0 10px;
+                }
+            }
+        }
+
+        .videos_main {
+            height: calc(100vh - 56px - 48px - 48px);
+            margin-top: 16px;
+            gap: 0;
+            padding: 0 12px;
+            padding-bottom: 60px; // Extra space for bottom nav
+
+            .video {
+                width: 100%;
+                min-height: auto;
+                margin-bottom: 24px;
+
+                .image_box {
+                    border-radius: 12px;
+                }
+
+                .details {
+                    .logo_box {
+                        width: 36px;
+                        height: 36px;
+                        min-width: 36px;
+                        margin-right: 12px;
+                        margin-top: 10px;
+                    }
+
+                    .description {
+                        .title {
+                            font-size: 1.4rem;
+                            line-height: 2rem;
+                            margin: 10px 0 4px 0;
+                        }
+
+                        .channel_info_box {
+                            .channel_name {
+                                font-size: 12px;
+                            }
+                        }
+
+                        .statistics {
+                            font-size: 12px;
+
+                            .viewCount {
+                                .dot {
+                                    font-size: 2rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ==================== SMALL MOBILE STYLES (<500px) ====================
+@media (max-width: $mobile-sm) {
+    .videos_area {
+        .tabs_section {
+            padding: 0 8px;
+            height: 44px;
+
+            .tabs {
+                .tab_item {
+                    margin: 6px;
+                    margin-left: 0;
+                    height: 26px;
+                    font-size: 1.2rem;
+                    padding: 0 8px;
+                }
+            }
+        }
+
+        .videos_main {
+            padding: 0 8px;
+            margin-top: 12px;
+
+            .video {
+                margin-bottom: 20px;
+
+                .image_box {
+                    border-radius: 10px;
+                }
+
+                .details {
+                    .logo_box {
+                        width: 32px;
+                        height: 32px;
+                        min-width: 32px;
+                    }
+
+                    .description {
+                        .title {
+                            font-size: 1.3rem;
+                            line-height: 1.8rem;
+                        }
+
+                        .channel_info_box {
+                            .channel_name {
+                                font-size: 11px;
+                            }
+                        }
+
+                        .statistics {
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

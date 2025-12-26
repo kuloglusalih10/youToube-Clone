@@ -4,6 +4,11 @@ $border-color: #d3d3d3;
 $icon-color: #0f0f0f;
 $middle-gray: rgb(0 0 0 / 5%);
 
+// Breakpoints
+$tablet: 1200px;
+$mobile: 792px;
+$mobile-sm: 500px;
+
 html{
     font-size: 10px;
     font-family: "Roboto", Arial, sans-serif;
@@ -510,7 +515,124 @@ html{
 
     }
 
+    // Mobile search button (hidden by default, shown on mobile)
+    .mobile-search-btn {
+        display: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+        
+        &:hover {
+            background-color: $hover-color;
+        }
 
-    
+        svg {
+            width: 24px;
+            height: 24px;
+            color: $icon-color;
+        }
+    }
+
+    // ==================== TABLET STYLES (792px - 1200px) ====================
+    @media (max-width: $tablet) {
+        padding: 0 16px;
+
+        &__search-box {
+            flex: 0 1 600px;
+
+            .input-box {
+                margin: 0 0 0 20px;
+
+                .input-container {
+                    min-width: 200px;
+                }
+            }
+        }
+
+        &__right-box {
+            min-width: 180px;
+        }
+    }
+
+    // ==================== MOBILE STYLES (<792px) ====================
+    @media (max-width: $mobile) {
+        padding: 0 8px;
+
+        &__left-box {
+            // Hide hamburger menu on mobile (no sidebar)
+            .icon-box {
+                display: none;
+            }
+
+            .logo-box {
+                width: 90px;
+
+                #country-code {
+                    display: none;
+                }
+            }
+        }
+
+        // Hide the full search box on mobile
+        &__search-box {
+            display: none;
+        }
+
+        // Show mobile search button
+        .mobile-search-btn {
+            display: flex;
+        }
+
+        &__right-box {
+            min-width: auto;
+            flex: 1;
+            justify-content: flex-end;
+
+            .buttons-box {
+                .settings-button {
+                    display: none;
+                }
+
+                .login-button {
+                    padding: 0;
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    justify-content: center;
+
+                    &:hover {
+                        background-color: $hover-color;
+                    }
+
+                    .person-icon {
+                        margin: 0;
+                    }
+
+                    .login-text {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // ==================== SMALL MOBILE STYLES (<500px) ====================
+    @media (max-width: $mobile-sm) {
+        &__left-box {
+            .logo-box {
+                .logo {
+                    width: 75px;
+                    height: 17px;
+                }
+            }
+        }
+    }
 
 }
